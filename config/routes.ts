@@ -1,5 +1,4 @@
 ﻿export default [
-  // LOGIN
   {
     path: '/user',
     layout: false,
@@ -16,8 +15,27 @@
     ],
   },
 
-  ///////////////////////////////////
-  // MAIN MENU
+  {
+    path: '/course-management',
+    name: 'Course Management',
+    icon: 'AppstoreOutlined',
+    routes: [
+      {
+        path: '/course-management',
+        redirect: '/course-management/dashboard',
+      },
+      {
+        path: '/course-management/course',
+        name: 'Course',
+        component: './CourseManagement/Course',
+      },
+      {
+        path: '/course-management/dashboard',
+        name: 'Dashboard',
+        component: './CourseManagement/Dashboard',
+      },
+    ],
+  },
 
   {
     path: '/dashboard',
@@ -26,7 +44,6 @@
     icon: 'HomeOutlined',
   },
 
-  // 🔥 TRAVEL PLANNER (MENU CHÍNH + 4 SUBMENU)
   {
     path: '/travel-planner',
     name: 'Travel Planner',
@@ -59,9 +76,6 @@
     ],
   },
 
-  ///////////////////////////////////
-  // CÁC MENU CŨ (GIỮ NGUYÊN)
-
   {
     path: '/random-user',
     name: 'RandomUser',
@@ -76,45 +90,43 @@
     icon: 'UnorderedListOutlined',
   },
 
-  ///////////////////////////////////
-  // HIDDEN ROUTES
-
   {
     path: '/gioi-thieu',
-    name: 'About',
     component: './TienIch/GioiThieu',
     hideInMenu: true,
   },
 
   {
     path: '/notification',
+    layout: false,
+    hideInMenu: true,
     routes: [
       {
-        path: './subscribe',
+        path: '/notification/subscribe',
         component: './ThongBao/Subscribe',
       },
       {
-        path: './check',
+        path: '/notification/check',
         component: './ThongBao/Check',
       },
       {
-        path: './',
+        path: '/notification',
         component: './ThongBao/NotifOneSignal',
       },
     ],
-    layout: false,
-    hideInMenu: true,
   },
 
-  ///////////////////////////////////
-  // EXCEPTION
+  // 🔥 FIX ROOT
+  {
+    path: '/',
+    redirect: '/course-management/dashboard',
+  },
 
   {
     path: '/403',
     component: './exception/403/403Page',
     layout: false,
   },
-
   {
     path: '/hold-on',
     component: './exception/DangCapNhat',
