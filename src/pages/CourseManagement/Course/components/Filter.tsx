@@ -30,11 +30,11 @@ const FilterBar: React.FC = () => {
             placeholder="Chọn giảng viên"
             style={{ width: '100%' }}
             options={TEACHER_OPTIONS}
-            value={courseState?.teacher}
+            value={courseState?.teacher ?? undefined}
             onChange={(value) =>
               dispatch({
                 type: 'courseManagement.course/setFilter',
-                payload: { teacher: value },
+                payload: { teacher: value ?? undefined },
               })
             }
           />
@@ -46,11 +46,11 @@ const FilterBar: React.FC = () => {
             placeholder="Chọn trạng thái"
             style={{ width: '100%' }}
             options={STATUS_OPTIONS}
-            value={courseState?.status}
+            value={courseState?.status ?? undefined}
             onChange={(value) =>
               dispatch({
                 type: 'courseManagement.course/setFilter',
-                payload: { status: value },
+                payload: { status: value ?? undefined },
               })
             }
           />

@@ -116,7 +116,50 @@
     ],
   },
 
-  // 🔥 FIX ROOT
+  // 🔥 BLOG
+  {
+    path: '/blog',
+    name: 'Blog',
+    icon: 'ReadOutlined',
+    routes: [
+      {
+        path: '/blog',
+        redirect: '/blog/home',
+      },
+      {
+        path: '/blog/home',
+        name: 'Trang chủ',
+        component: './blog/Blog',
+      },
+      {
+        path: '/blog/post-detail',
+        component: './blog/PostDetail',
+        hideInMenu: true,
+      },
+      {
+        path: '/blog/about',
+        name: 'Giới thiệu',
+        component: './blog/About',
+      },
+      {
+        path: '/blog/manage',
+        name: 'Quản lý',
+        routes: [
+          {
+            path: '/blog/manage/post',
+            name: 'Bài viết',
+            component: './blog/Manage/Post',
+          },
+          {
+            path: '/blog/manage/tag',
+            name: 'Thẻ',
+            component: './blog/Manage/Tag',
+          },
+        ],
+      },
+    ],
+  },
+
   {
     path: '/',
     redirect: '/course-management/dashboard',
