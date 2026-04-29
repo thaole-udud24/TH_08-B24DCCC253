@@ -1,23 +1,37 @@
-import { Card } from 'antd';
-import ProfileCard from './components/ProfileCard';
-import SkillList from './components/SkillList';
-import SocialLinks from './components/SocialLinks';
+import { useState } from 'react';
+import { Button } from 'antd';
+import HeroSection from './components/HeroSection';
+import SkillMarquee from './components/SkillMarquee';
+import ProfileTabs from './components/ProfileTabs';
+import AboutSection from './components/AboutSection';
+import ExperienceTimeline from './components/ExperienceTimeline';
+import LanguageSection from './components/LanguageSection';
+import FloatingDecor from './components/FloatingDecor';
+import './styles.less';
 
 export default function AboutPage() {
+  const [dark, setDark] = useState(false);
+
   return (
-    <div style={{ padding: 32, background: '#f8fafc', minHeight: '100vh' }}>
-      <Card
-        style={{
-          maxWidth: 860,
-          margin: '0 auto',
-          borderRadius: 24,
-          boxShadow: '0 12px 32px rgba(15, 23, 42, 0.08)',
-        }}
-      >
-        <ProfileCard />
-        <SkillList />
-        <SocialLinks />
-      </Card>
+    <div className={`portfolio-page ${dark ? 'dark' : ''}`}>
+      <div className="portfolio-wrapper">
+        <div className="theme-toggle">
+          <Button shape="circle" onClick={() => setDark(!dark)}>
+            {dark ? '☀️' : '🌙'}
+          </Button>
+        </div>
+
+        <FloatingDecor />
+
+        <div className="portfolio-container">
+          <HeroSection />
+          <SkillMarquee />
+          <ProfileTabs />
+          <AboutSection />
+          <ExperienceTimeline />
+          <LanguageSection />
+        </div>
+      </div>
     </div>
   );
 }

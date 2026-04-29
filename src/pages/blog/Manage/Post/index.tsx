@@ -1,8 +1,10 @@
-import { Card, Typography } from 'antd';
+import { Typography } from 'antd';
 import usePostManage from './hooks/usePostManage';
 import PostFilter from './components/PostFilter';
 import PostTable from './components/PostTable';
 import PostModal from './components/PostModal';
+import PostLayout from './ui/PostLayout';
+import './ui/styles.less';
 
 export default function ManagePostPage() {
   const {
@@ -22,17 +24,21 @@ export default function ManagePostPage() {
   } = usePostManage();
 
   return (
-    <div style={{ padding: 32, background: '#f8fafc', minHeight: '100vh' }}>
-      <Card style={{ borderRadius: 20 }}>
-        <Typography.Title level={2}>Quản lý bài viết</Typography.Title>
+    <PostLayout>
+      <div className="post-card">
+        <Typography.Title level={2} className="post-title">
+          Quản lý bài viết
+        </Typography.Title>
 
-        <PostFilter
-          keyword={keyword}
-          status={status}
-          onKeywordChange={setKeyword}
-          onStatusChange={setStatus}
-          onCreate={openCreate}
-        />
+        <div className="post-filter">
+          <PostFilter
+            keyword={keyword}
+            status={status}
+            onKeywordChange={setKeyword}
+            onStatusChange={setStatus}
+            onCreate={openCreate}
+          />
+        </div>
 
         <PostTable
           dataSource={dataSource}
@@ -48,7 +54,7 @@ export default function ManagePostPage() {
           onCancel={closeForm}
           onSubmit={submitForm}
         />
-      </Card>
-    </div>
+      </div>
+    </PostLayout>
   );
 }
